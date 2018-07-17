@@ -34,6 +34,17 @@ WHERE Artist.ArtistName = "Britney Spears"
         -- SELECT a.Title, s.Title FROM Song s LEFT JOIN Album a ON s.AlbumId = a.AlbumId;
 
 -- Write a SELECT statement to display how many songs exist for each album. You'll need to use the COUNT() function and the GROUP BY keyword sequence.
+SELECT AlbumId, COUNT(SongId) 
+FROM Song
+GROUP BY AlbumId
+--^^^Simple version
+SELECT COUNT(SongId) AS "Song Count", Album.Title AS "Album Title"
+FROM Song
+LEFT JOIN Album ON Song.AlbumId = Album.AlbumId --needs representation of what is COMMON between both tables
+GROUP BY Album.Title -- Sorty By Album Title
+--^^^More robust version
+
+
 
 -- Write a SELECT statement to display how many songs exist for each artist. You'll need to use the COUNT() function and the GROUP BY keyword sequence.
 
